@@ -1,74 +1,54 @@
 <template>
-  <div class="row q-col-gutter-sm q-py-sm">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <q-card class="text-grey-8">
-        <q-card-section class="q-pa-none">
-          <q-table
-            class="no-shadow"
-            :data="data"
-            title="Questionari Disponibili"
-            :hide-header="mode === 'grid'"
-            :columns="columns"
-            row-key="name"
-            :filter="filter"
-            :pagination.sync="pagination"
-          >
-            <template v-slot:top-right="props">
-              <q-input
-                borderless
-                dense
-                class="q-px-md"
-                debounce="300"
-                v-model="filter"
-                placeholder="Cerca"
-              >
-                <template v-slot:append>
-                  <q-icon name="search" />
-                </template>
-              </q-input>
+  <q-page padding>
+    <q-card class="text-grey-8">
+      <q-card-section class="q-pa-none">
+        <q-table
+          class="no-shadow"
+          :data="data"
+          title="Questionari Disponibili"
+          :hide-header="mode === 'grid'"
+          :columns="columns"
+          row-key="name"
+          :filter="filter"
+          :pagination.sync="pagination"
+        >
+          <template v-slot:top-right="props">
+            <q-input
+              borderless
+              dense
+              class="q-px-md"
+              debounce="300"
+              v-model="filter"
+              placeholder="Cerca"
+            >
+              <template v-slot:append>
+                <q-icon name="search" />
+              </template>
+            </q-input>
 
-              <!--  <q-btn
-                flat
-                round
-                dense
-                :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
-                @click="props.toggleFullscreen"
-                v-if="mode === 'list'"
-                class="q-px-sm"
-              >
-                <q-tooltip :disable="$q.platform.is.mobile" v-close-popup
-                  >{{
-                    props.inFullscreen ? "Exit Fullscreen" : "Toggle Fullscreen"
-                  }}
-                </q-tooltip>
-              </q-btn> -->
-
-              <q-btn
-                color="primary"
-                icon-right="archive"
-                label="Esporta in csv"
-                no-caps
-                @click="exportTable"
-              />
-            </template>
-          </q-table>
-        </q-card-section>
-        <q-card-actions align="right">
-          <q-btn
-            color="blue-8"
-            icon-right="fas fa-plus"
-            label="Aggiungi un nuovo questionario"
-            to="/questionario"
-          />
-        </q-card-actions>
-      </q-card>
-    </div>
-  </div>
+            <q-btn
+              color="primary"
+              icon-right="archive"
+              label="Esporta in csv"
+              no-caps
+              @click="exportTable"
+            />
+          </template>
+        </q-table>
+      </q-card-section>
+      <q-card-actions align="right">
+        <q-btn
+          color="blue-8"
+          icon-right="fas fa-plus"
+          label="Aggiungi un nuovo questionario"
+          to="/questionario"
+        />
+      </q-card-actions>
+    </q-card>
+  </q-page>
 </template>
 
 <script>
-import { exportFile } from "quasar";
-
 function wrapCsvValue(val, formatFn) {
   let formatted = formatFn !== void 0 ? formatFn(val) : val;
 
@@ -86,7 +66,8 @@ function wrapCsvValue(val, formatFn) {
   return `"${formatted}"`;
 }
 export default {
-  name: "TableVisits",
+  name: "Questionari",
+
   data() {
     return {
       filter: "",
@@ -176,6 +157,7 @@ export default {
       }
     };
   },
+
   methods: {
     exportTable() {
       // naive encoding to csv format
@@ -209,3 +191,5 @@ export default {
   }
 };
 </script>
+
+<style></style>

@@ -2,16 +2,37 @@
   <q-card class="bg-transparent no-shadow no-border">
     <q-card-section class="q-pa-none">
       <div class="row q-col-gutter-sm ">
-        <div v-for="(item, index) in items" :key="index" class="col-md-3 col-sm-12 col-xs-12">
-          <q-item :style="`background-color: ${item.color1}`" class="q-pa-none q-ml-xs">
-            <q-item-section v-if="icon_position === 'left'" side :style="`background-color: ${item.color2}`" class=" q-pa-lg q-mr-none text-white">
+        <div
+          v-for="(item, index) in items"
+          :key="index"
+          class="col-md-4 col-sm-12 col-xs-12"
+        >
+          <q-item
+            :style="`background-color: ${item.color1}`"
+            class="q-pa-none q-ml-xs"
+          >
+            <q-item-section
+              v-if="icon_position === 'left'"
+              side
+              :style="`background-color: ${item.color2}`"
+              class=" q-pa-lg q-mr-none text-white"
+            >
               <q-icon :name="item.icon" color="white" size="24px"></q-icon>
             </q-item-section>
             <q-item-section class=" q-pa-md q-ml-none  text-white">
-              <q-item-label class="text-white text-h6 text-weight-bolder">{{ item.value }}</q-item-label>
-              <q-item-label>{{ item.title }}</q-item-label>
+              <q-item-label class="text-white text-h6 text-weight-bolder">{{
+                item.value
+              }}</q-item-label>
+              <q-item-label class="text-bold">{{ item.title }}</q-item-label>
+              <q-item-label class="text-white" caption>{{
+                item.caption
+              }}</q-item-label>
             </q-item-section>
-            <q-item-section v-if="icon_position === 'right'" side class="q-mr-md text-white">
+            <q-item-section
+              v-if="icon_position === 'right'"
+              side
+              class="q-mr-md text-white"
+            >
               <q-icon :name="item.icon" color="white" size="44px"></q-icon>
             </q-item-section>
           </q-item>
@@ -35,33 +56,36 @@ export default {
       return this.icon_position === "left"
         ? [
             {
-              title: "My Account",
-              icon: "person",
+              title: "Dipendenti Iscritti",
+              caption: "Osserva i dipendenti iscritti al sistema",
+              icon: "fas fa-user-alt",
               value: "200",
               color1: "#5064b5",
               color2: "#3e51b5"
             },
             {
-              title: "Followers",
-              icon: "fab fa-twitter",
-              value: "500",
+              title: "CO2 Risparmiata",
+              caption: "Dati rispetto all'anno scorso",
+              icon: "fas fa-leaf",
+              value: "500t",
               color1: "#f37169",
               color2: "#f34636"
             },
             {
-              title: "Connections",
-              icon: "fab fa-google",
+              title: "Questionari Compilati",
+              caption: "Questionari compilati dai dipendenti",
+              icon: "fas fa-clipboard",
               value: "50",
               color1: "#ea6a7f",
               color2: "#ea4b64"
-            },
-            {
+            }
+            /* {
               title: "Website Visits",
               icon: "bar_chart",
               value: "1020",
               color1: "#a270b1",
               color2: "#9f52b1"
-            }
+            } */
           ]
         : [
             {

@@ -1,19 +1,21 @@
 <template>
   <q-item clickable :to="link">
     <q-item-section v-if="icon" avatar>
-      <q-icon :name="icon" />
+      <q-icon :name="icon" color="white" />
     </q-item-section>
 
     <q-item-section>
-      <q-item-label>{{ title }}</q-item-label>
-      <q-item-label caption>{{ caption }}</q-item-label>
+      <q-item-label class="text-white text-h7 text-bold">{{
+        title
+      }}</q-item-label>
+      <q-item-label class="text-white" caption>{{ caption }}</q-item-label>
     </q-item-section>
   </q-item>
 </template>
 
 <script>
 export default {
-  name: 'EssentialLink',
+  name: "EssentialLink",
   props: {
     title: {
       type: String,
@@ -22,18 +24,18 @@ export default {
 
     caption: {
       type: String,
-      default: ''
+      default: ""
     },
 
     link: {
       type: String,
-      default: '#'
+      default: "#"
     },
 
     icon: {
       type: String,
-      default: ''
+      default: ""
     }
   }
-}
+};
 </script>
